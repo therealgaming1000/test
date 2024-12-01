@@ -114,7 +114,7 @@ body {
   flex-wrap: wrap;
 }
 
-/* Create two unequal columns that sits next to each other */
+/* Create two unequal columns that sit next to each other */
 /* Sidebar/left column */
 .side {
   flex: 40%;
@@ -173,6 +173,8 @@ body {
     <a href="#" onclick="showContent('Traktor')">Traktor</a>
     <a href="#" onclick="showContent('AnUndVerkauf')">An- und Verkauf</a>
     <a href="#" onclick="showContent('Kontakt')">Kontakt</a>
+    <!-- Leerer Block, um die Navbar gleich lang wie der Hauptteil zu machen -->
+    <div style="flex: 1;"></div>
   </div>
 
   <!-- The flexible grid (content) -->
@@ -208,32 +210,9 @@ body {
   </div>
 
   <script>
-    function getHeaderContent() {
-      return `
-        <div class="side">
-          <h2>Kontaktdaten</h2>
-          <div>
-            <img src="Images/logo2.png" width="210" height="auto" alt="Logo">
-          </div>
-          <p class="kleiner">Gewerbepark Mutters</p>
-          <p class="kleiner">6020 INNSBRUCK</p>
-          <p class="kleiner">Tel.:  +43 512 5480 480</p>
-          <p class="kleiner">Fax.: +43 512 5480 48-20</p>
-          <hr>
-          <h2>Öffnungszeiten</h2>
-          <h4 class="kleiner">Montag bis Donnerstag</h4>
-          <h4 class="kleiner">8.00 - 12.00 / 12.45- 17.15</h4>
-          <h4 class="kleiner">Freitag </h4>
-          <h4 class="kleiner">8.00 - 12.30</h4>
-          <hr>
-          <hr>
-        </div>
-      `;
-    }
-
     function showContent(section) {
       const contentDiv = document.getElementById('content');
-      let content = getHeaderContent();
+      let content = '';
 
       switch (section) {
         case 'Startseite':
