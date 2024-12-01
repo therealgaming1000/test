@@ -82,6 +82,9 @@ body {
   display: flex;
   background-color: #333;
   width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* Style the navigation bar links */
@@ -103,13 +106,6 @@ body {
   padding: 20px;
 }
 
-/* Add a fixed class for the navbar */
-.navbar.fixed {
-  position: fixed;
-  top: 0;
-  z-index: 1000;
-}
-
 /* Column container */
 .row {
   display: flex;
@@ -119,14 +115,14 @@ body {
 /* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
-  flex: 50%;
+  flex: 40%;
   background-color: #f1f1f1;
   padding: 20px;
 }
 
 /* Main column */
 .main {
-  flex: 50%;
+  flex: 60%;
   background-color: white;
   padding: 20px;
 }
@@ -145,9 +141,16 @@ body {
   background: #ddd;
 }
 
+/* Contact section */
+.contact {
+  background-color: #f1f1f1;
+  padding: 20px;
+  margin-top: 20px;
+}
+
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
-  .row, .navbar {
+  .row {
     flex-direction: column;
   }
 }
@@ -173,6 +176,26 @@ body {
   <!-- The flexible grid (content) -->
   <div id="content" class="row">
     <!-- Der Inhalt wird hier dynamisch eingefügt -->
+  </div>
+
+  <!-- Contact Section -->
+  <div class="contact">
+    <h2>Kontaktdaten</h2>
+    <div>
+      <img src="Images/logo2.png" width="210" height="auto" alt="Logo">
+    </div>
+    <p class="kleiner">Gewerbepark Mutters</p>
+    <p class="kleiner">6020 INNSBRUCK</p>
+    <p class="kleiner">Tel.:  +43 512 5480 480</p>
+    <p class="kleiner">Fax.: +43 512 5480 48-20</p>
+    <hr>
+    <h2>Öffnungszeiten</h2>
+    <h4 class="kleiner">Montag bis Donnerstag</h4>
+    <h4 class="kleiner">8.00 - 12.00 / 12.45- 17.15</h4>
+    <h4 class="kleiner">Freitag </h4>
+    <h4 class="kleiner">8.00 - 12.30</h4>
+    <hr>
+    <hr>
   </div>
 
   <!-- Footer -->
@@ -451,7 +474,7 @@ body {
                 <h3>Ort der Gewerbeberechtigung</h3>
                 <p>Gärberbach 10 <br>
                     6020 Innsbruck/Land 1 <br>
-                    Österreich 
+                    Österreich
                 </p>
                 <h3>UID-Nummer</h3>
                 <p>ATU 39503701</p>
@@ -526,7 +549,6 @@ body {
 
       contentDiv.innerHTML = content;
     }
-
     // Standardmäßig die Startseite anzeigen
     document.addEventListener("DOMContentLoaded", function() {
       showContent('Startseite');
