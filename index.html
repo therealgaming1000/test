@@ -67,9 +67,7 @@ body {
   padding: 10px;
   text-align: center;
   background-color: white;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  position: relative;
 }
 
 .header img {
@@ -84,19 +82,14 @@ body {
   display: flex;
   background-color: #333;
   width: 100%;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  height: 40px; /* Reduzierte Höhe */
 }
 
 /* Style the navigation bar links */
 .navbar a {
   color: white;
-  padding: 10px 15px; /* Angepasstes Padding */
+  padding: 14px 30px;
   text-decoration: none;
   text-align: center;
-  font-size: 14px; /* Verkleinerte Schriftgröße */
 }
 
 /* Change color on hover */
@@ -110,13 +103,20 @@ body {
   padding: 20px;
 }
 
+/* Add a fixed class for the navbar */
+.navbar.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+}
+
 /* Column container */
 .row {
   display: flex;
   flex-wrap: wrap;
 }
 
-/* Create two unequal columns that sit next to each other */
+/* Create two unequal columns that sits next to each other */
 /* Sidebar/left column */
 .side {
   flex: 40%;
@@ -145,27 +145,10 @@ body {
   background: #ddd;
 }
 
-/* Contact section */
-.contact {
-  background-color: #f1f1f1;
-  padding: 20px;
-  margin-top: 20px;
-  text-align: right; /* Kontaktdaten nach rechts ausrichten */
-}
-
 /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 700px) {
-  .row {
+  .row, .navbar {
     flex-direction: column;
-  }
-}
-
-/* Responsive layout - when the screen is less than 50% wide, make the navbar float to the bottom */
-@media screen and (max-width: 50%) {
-  .navbar {
-    position: relative;
-    bottom: 0;
-    width: 100%;
   }
 }
 </style>
@@ -185,31 +168,12 @@ body {
     <a href="#" onclick="showContent('Traktor')">Traktor</a>
     <a href="#" onclick="showContent('AnUndVerkauf')">An- und Verkauf</a>
     <a href="#" onclick="showContent('Kontakt')">Kontakt</a>
+    <a href="#" onclick="showContent('Kontakt')">Kontakt</a>
   </div>
 
   <!-- The flexible grid (content) -->
   <div id="content" class="row">
     <!-- Der Inhalt wird hier dynamisch eingefügt -->
-  </div>
-
-  <!-- Contact Section -->
-  <div class="contact">
-    <h2>Kontaktdaten</h2>
-    <div>
-      <img src="Images/logo2.png" width="210" height="auto" alt="Logo">
-    </div>
-    <p class="kleiner">Gewerbepark Mutters</p>
-    <p class="kleiner">6020 INNSBRUCK</p>
-    <p class="kleiner">Tel.:  +43 512 5480 480</p>
-    <p class="kleiner">Fax.: +43 512 5480 48-20</p>
-    <hr>
-    <h2>Öffnungszeiten</h2>
-    <h4 class="kleiner">Montag bis Donnerstag</h4>
-    <h4 class="kleiner">8.00 - 12.00 / 12.45- 17.15</h4>
-    <h4 class="kleiner">Freitag </h4>
-    <h4 class="kleiner">8.00 - 12.30</h4>
-    <hr>
-    <hr>
   </div>
 
   <!-- Footer -->
@@ -220,9 +184,32 @@ body {
   </div>
 
   <script>
+    function getHeaderContent() {
+      return `
+        <div class="side">
+          <h2>Kontaktdaten</h2>
+          <div>
+            <img src="Images/logo2.png" width="210" height="auto" alt="Logo">
+          </div>
+          <p class="kleiner">Gewerbepark Mutters</p>
+          <p class="kleiner">6020 INNSBRUCK</p>
+          <p class="kleiner">Tel.:  +43 512 5480 480</p>
+          <p class="kleiner">Fax.: +43 512 5480 48-20</p>
+          <hr>
+          <h2>Öffnungszeiten</h2>
+          <h4 class="kleiner">Montag bis Donnerstag</h4>
+          <h4 class="kleiner">8.00 - 12.00 / 12.45- 17.15</h4>
+          <h4 class="kleiner">Freitag </h4>
+          <h4 class="kleiner">8.00 - 12.30</h4>
+          <hr>
+          <hr>
+        </div>
+      `;
+    }
+
     function showContent(section) {
       const contentDiv = document.getElementById('content');
-      let content = '';
+      let content = getHeaderContent();
 
       switch (section) {
         case 'Startseite':
@@ -230,10 +217,10 @@ body {
             <div class="main">
               <hr>
               <h1>Herzlich Willkommen auf unserer Homepage. <br> Schön, dass Sie uns gefunden haben!</h1>
-              <p>Seit 1996 betreuen wir unsere Kunden in allen Bereichen rund um Auto, Anhänger, Wohnmobile, zweirädige Fahrzeuge und Traktoren. Über die Jahre haben wir unseren Familienbetrieb um zwei Kfz Techniker erweitert, die genauso wie Christof Gritscher ihren Beruf lieben und leben.</p>
-              <h4>Täglich freuen wir uns auf neue Herausforderungen und vielleicht dürfen wir auch Sie in unserer Werkstätte begrüßen!</h4>
+              <p>Seit 1996 betreuen wir unsere Kunden in allen Bereichen rund um  Auto, Anhänger, Wohnmobile, zweirädige Fahrzeuge und Traktoren. Über die Jahre haben wir unseren Familienbetrieb um zwei Kfz Techniker erweitert, die genauso wie Christof Gritscher ihren Beruf lieben und leben.</p>
+              <h4>Täglich freuen wir uns auf neue Herausforderungen  und vielleicht dürfen wir auch Sie in unserer Werkstätte begrüßen!</h4>
               <h4>Bei uns zählt noch der menschliche und persönliche Kontakt, verbunden mit Tiroler Handschlagqualität.</h4>
-              <p>Dabei muss für einen Kaffee oder Tee auch immer Zeit sein :-) </p>
+              <p>Dabei muss für einen Kaffee oder Tee  auch immer Zeit sein :-) </p>
               <hr>
               <h1>Reparaturen ALLER Fahrzeugmarken</h1>
               <hr>
@@ -271,7 +258,7 @@ body {
                 <p>Motor zerlegen und wieder zusammenbauen </p>
                 <p>Getriebe in alle Einzelteile zerlegen und wieder zusammen stellen </p>
                 <p>usw. usw.</p>
-                <p>- weil Ihnen die Arbeit Spaß macht und weil sie es Können :-) </p>
+                <p>- weil Ihnen die Arbeit Spass macht und weil sie es Können :-) </p>
                 <hr>
               <div class="clearfix">
                 <p>
@@ -465,7 +452,7 @@ body {
                 <h3>Ort der Gewerbeberechtigung</h3>
                 <p>Gärberbach 10 <br>
                     6020 Innsbruck/Land 1 <br>
-                    Österreich
+                    Österreich 
                 </p>
                 <h3>UID-Nummer</h3>
                 <p>ATU 39503701</p>
@@ -483,7 +470,7 @@ body {
                 <p>Christof Gritscher </p>
                 <br>
                 <h3>Zusätzliche Informationspflicht</h3>
-                <p>Pictures copyright by Kfz Gritscher</p>
+                <p>pictures copyright by Kfz Gritscher</p>
                 <br>
                 <h3>Unternehmensgegenstand</h3>
                 <p>KFZ-Reparatur und Fahrzeughandel </p>
@@ -500,7 +487,7 @@ body {
                 </p>
                 <br>
                 <h2>Haftungsausschluss</h2>
-                <p>INHALT DES ONLINEANGEBOTS</p>
+                <p>INHALT DES ONLINEANGEBTOS</p>
                 <p>Der Autor übernimmt keinerlei Gewähr für die Aktualität, Korrektheit, Vollständigkeit oder Qualität der bereitgestellten Informationen. Haftungsansprüche gegen den Autor, welche sich auf Schäden materieller oder ideeller Art beziehen, die durch die Nutzung oder Nichtnutzung der dargebotenen Informationen bzw. durch die Nutzung fehlerhafter und unvollständiger Informationen verursacht wurden, sind grundsätzlich ausgeschlossen, sofern seitens des Autors kein nachweislich vorsätzliches oder grob fahrlässiges Verschulden vorliegt. Alle Angebote sind freibleibend und unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig einzustellen.</p>
                 <p>VERWEISE UND LINKS</p>
                 <p>Bei direkten oder indirekten Verweisen auf fremde Internetseiten (Links), die außerhalb des Verantwortungsbereiches des Autors liegen, würde eine Haftungsverpflichtung ausschließlich in dem Fall in Kraft treten, in dem der Autor von den Inhalten Kenntnis hat und es ihm technisch möglich und zumutbar wäre, die Nutzung im Falle rechtswidriger Inhalte zu verhindern. Der Autor erklärt hiermit ausdrücklich, dass zum Zeitpunkt der Linksetzung keine illegalen Inhalte auf den zu verlinkenden Seiten erkennbar waren. Auf die aktuelle und zukünftige Gestaltung, die Inhalte oder die Urheberschaft der gelinkten/verknüpften Seiten hat der Autor keinerlei Einfluss. Deshalb distanziert er sich hiermit ausdrücklich von allen Inhalten aller gelinkten/verknüpften Seiten, die nach der Linksetzung verändert wurden. Diese Feststellung gilt für alle innerhalb des eigenen Internetangebotes gesetzten Links und Verweise sowie für Fremdeinträge in vom Autor eingerichtete Gästebücher, Diskussionsforen und Mailinglisten. Für illegale, fehlerhafte oder unvollständige Inhalte und insbesondere für Schäden, die aus der Nutzung oder Nichtnutzung solcherart dargebotener Informationen entstehen, haftet allein der Anbieter der Seite, auf welche verwiesen wurde, nicht derjenige, der über Links auf die jeweilige Veröffentlichung lediglich verweist.</p>
@@ -513,7 +500,7 @@ body {
                 <p>Google Analytics</p>
                 <p>Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. ("Google"). Google Analytics verwendet sog. "Cookies", Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglichen. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website werden in der Regel an einen Server von Google in den USA übertragen und dort gespeichert. Im Falle der Aktivierung der IP-Anonymisierung auf dieser Webseite, wird Ihre IP-Adresse von Google jedoch innerhalb von Mitgliedstaaten der Europäischen Union oder in anderen Vertragsstaaten des Abkommens über den Europäischen Wirtschaftsraum zuvor gekürzt. Nur in Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den USA übertragen und dort gekürzt. Die IP-Anonymisierung ist auf dieser Website aktiv. Im Auftrag des Betreibers dieser Website wird Google diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen gegenüber dem Websitebetreiber zu erbringen. Die im Rahmen von Google Analytics von Ihrem Browser übermittelte IP-Adresse wird nicht mit anderen Daten von Google zusammengeführt. Sie können die Speicherung der Cookies durch eine entsprechende Einstellung Ihrer Browser-Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website vollumfänglich werden nutzen können. Sie können darüber hinaus die Erfassung der durch das Cookie erzeugten und auf Ihre Nutzung der Website bezogenen Daten (inkl. Ihrer IP-Adresse) an Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem Sie das unter dem folgenden Link verfügbare Browser-Plugin herunterladen und installieren: http://tools.google.com/dlpage/gaoptout?hl=de.</p>
                 <p>SOCIAL PLUGINS</p>
-                <p>Auf dieser Website werden PlugIns des sozialen Netzwerks Facebook, Facebook Inc., Menlo Park, California, United States, in Form eines „Like-Button“ und/oder des sozialen Netzwerks Google Plus der Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, United States, in Form eines „+1-Button“ integriert. Das Plugin ermöglicht eine direkte Verbindung zwischen dem Browser des Nutzers und dem Facebook- bzw. Google-Server. Facebook bzw. Google ermitteln so Informationen (insbesondere Datum und Uhrzeit des Website-Aufrufs und sonstige browserbezogene Informationen) des Nutzers auf der Website. Wenn der Nutzer den Facebook „Like-Button“ bzw. den Google „+1-Button“ anklickt, während der Nutzer in seinem Facebook-Account bzw. Google-Account eingeloggt ist, ist es Facebook bzw. Google weiters möglich, den Besuch auf der Website dem Profil des Nutzers zuzuordnen. Weitergehende Informationen finden Sie hier [http://www.facebook.com/help/186325668085084] und hier [http://www.google.com/intl/de/+/policy/+1button.html]. Mit Besuch der Website erklären Sie sich mit einer derartigen Verwendung Ihrer Nutzer-Informationen ausdrücklich einverstanden</p>
+                <p>Auf dieser Website werden PlugIns des sozialen Netzwerk Facebook, Facebook Inc., Menlo Park, California, United States, in Form eines „Like-Button“ und/oder des sozialen Netzwerks Google Plus der Google Inc., 1600 Amphitheatre Parkway, Mountain View, CA 94043, United States, in Form eines „+1-Button“ integriert. Das Plugin ermöglicht eine direkte Verbindung zwischen dem Browser des Nutzers und dem Facebook- bzw. Google-Server. Facebook bzw. Google ermitteln so Informationen (insbesondere Datum und Uhrzeit des Website-Aufrufs und sonstige browserbezogene Informationen) des Nutzers auf der Website. Wenn der Nutzer den Facebook „Like-Button“ bzw. den Google „+1-Button“ anklickt, während der Nutzer in seinem Facebook-Account bzw Google-Account eingeloggt ist, ist es Facebook bzw. Google weiters möglich, den Besuch auf der Website dem Profil des Nutzers zuzuordnen. Weitergehende Informationen finden Sie hier [http://www.facebook.com/help/186325668085084] und hier [http://www.google.com/intl/de/+/policy/+1button.html]. Mit Besuch der Website erklären Sie sich mit einer derartigen Verwendung Ihrer Nutzer-Informationen ausdrücklich einverstanden</p>
                 <br>
                 <p>Website powered by Alexandra Gritscher</p>
                 <hr>
@@ -549,4 +536,3 @@ body {
 
 </body>
 </html>
-
