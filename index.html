@@ -85,14 +85,16 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  height: 40px; /* Reduzierte Höhe */
 }
 
 /* Style the navigation bar links */
 .navbar a {
   color: white;
-  padding: 14px 20px;
+  padding: 10px 15px; /* Angepasstes Padding */
   text-decoration: none;
   text-align: center;
+  font-size: 14px; /* Verkleinerte Schriftgröße */
 }
 
 /* Change color on hover */
@@ -549,6 +551,7 @@ body {
 
       contentDiv.innerHTML = content;
     }
+
     // Standardmäßig die Startseite anzeigen
     document.addEventListener("DOMContentLoaded", function() {
       showContent('Startseite');
